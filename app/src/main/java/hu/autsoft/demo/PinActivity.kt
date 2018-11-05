@@ -17,7 +17,7 @@ class PinActivity : AppCompatActivity() {
             if (pinInputField.text.toString() == "7878") {
                 startActivity(Intent(this, MainActivity::class.java))
             } else {
-                pinInputContainer.error = "Invalid PIN"
+                pinInputContainer.error = getString(R.string.pin_invalid)
             }
         }
     }
