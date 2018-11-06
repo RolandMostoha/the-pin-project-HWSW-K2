@@ -8,13 +8,16 @@ import kotlinx.android.synthetic.main.content_pin.*
 
 class PinActivity : AppCompatActivity() {
 
+    private lateinit var pinValidatorApi: PinValidatorApi
+
     private val pinValidator = PinValidator()
-    private val networkPinValidator = NetworkPinValidator()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pin)
         setSupportActionBar(toolbar)
+
+        pinValidatorApi = Injection.provideValidatorApi()
 
         submitPin.setOnClickListener {
             val pin = pinInputField.text.toString()
@@ -27,7 +30,7 @@ class PinActivity : AppCompatActivity() {
     }
 
     private fun handleSuccess(pin: String) {
-        networkPinValidator.validatePin(pin) { isPinValid ->
+        pinValidatorApi.validatePin(pin) { isPinValid ->
             if (isPinValid) {
                 startActivity(Intent(this, MainActivity::class.java))
             } else {

@@ -20,6 +20,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "mode"
+    productFlavors {
+        mock {
+            dimension "mode"
+        }
+        prod {
+            dimension "mode"
+        }
+    }
 }
 
 dependencies {
