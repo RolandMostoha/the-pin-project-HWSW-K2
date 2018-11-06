@@ -8,16 +8,18 @@ import kotlinx.android.synthetic.main.content_pin.*
 
 class PinActivity : AppCompatActivity() {
 
+    private val pinValidator = PinValidator()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pin)
         setSupportActionBar(toolbar)
 
         submitPin.setOnClickListener {
-            if (pinInputField.text.toString() == "7878") {
-                startActivity(Intent(this, MainActivity::class.java))
-            } else {
-                pinInputContainer.error = getString(R.string.pin_invalid)
+            val result = pinValidator.validatePin(pinInputField.text.toString())
+            when (result) {
+                is PinValidator.ValidationResult.Success -> startActivity(Intent(this, MainActivity::class.java))
+                is PinValidator.ValidationResult.Error -> pinInputContainer.error = getString(result.messageId)
             }
         }
     }
