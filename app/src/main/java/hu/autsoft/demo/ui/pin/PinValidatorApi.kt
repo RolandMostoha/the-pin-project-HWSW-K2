@@ -1,4 +1,4 @@
-package hu.autsoft.demo
+package hu.autsoft.demo.ui.pin
 
 interface PinValidatorApi {
 

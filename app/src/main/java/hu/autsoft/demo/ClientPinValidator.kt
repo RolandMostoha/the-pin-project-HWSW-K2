@@ -2,7 +2,7 @@ package hu.autsoft.demo
 
 import android.support.annotation.StringRes
 
-class PinValidator {
+class ClientPinValidator {
 
     sealed class ValidationResult {
         object Success : ValidationResult()

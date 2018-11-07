@@ -1,6 +1,7 @@
 package hu.autsoft.demo
 
 import android.os.Handler
+import hu.autsoft.demo.ui.pin.PinValidatorApi
 import kotlin.random.Random
 
 class NetworkPinValidator : PinValidatorApi {
